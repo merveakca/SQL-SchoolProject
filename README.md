@@ -134,20 +134,35 @@ CREATE TABLE [dbo].[Students](
 **AÇIKLAMA:**  
 
 Students Tablosu, aşağıdaki sütunları içermektedir:  
+
 *Id:* Öğrenci kimlik numarasını temsil eden benzersiz bir tamsayı değeri.  
+
 *LevelId:* Öğrencinin seviyesini belirten tamsayı değeri.  
+
 *ClassId:* Öğrencinin sınıfını belirten tamsayı değeri.  
+
 *Name:* Öğrencinin adını temsil eden metinsel değer (50 karakter veya daha az).  
+
 *Surname:* Öğrencinin soyadını temsil eden metinsel değer (50 karakter veya daha az).  
+
 *Email:* Öğrencinin e-posta adresini temsil eden metinsel değer (100 karakter veya daha az).  
+
 *PhoneNumber:* Öğrencinin telefon numarasını temsil eden metinsel değer (11 karakter uzunluğunda, opsiyonel).  
+
 *MotherName:* Öğrencinin annesinin adını temsil eden metinsel değer (50 karakter veya daha az).  
+
 *FatherName:* Öğrencinin babasının adını temsil eden metinsel değer (50 karakter veya daha az).  
+
 *ParentPhoneNumber:* Öğrencinin velisinin telefon numarasını temsil eden metinsel değer (11 karakter uzunluğunda).  
+
 *IsActive:* Öğrencinin etkinlik durumunu temsil eden mantıksal değer (aktif ise 1, değilse 0 veya boş).  
+
 *CreatedProfessionId:* Kayıt oluşturulduğunda atanmış olan meslek kimlik numarasını temsil eden tamsayı değeri (opsiyonel).  
+
 *CreatedDate:* Kaydın oluşturulduğu tarihi ve saatini temsil eden değer (opsiyonel).  
+
 *UpdatedProfessionId:* Son güncelleme yapıldığında atanmış olan meslek kimlik numarasını temsil eden tamsayı değeri (opsiyonel).  
+
 *UpdatedDate:* Son güncelleme tarihini ve saatini temsil eden değer (opsiyonel).  
 
 **Notlar**  
