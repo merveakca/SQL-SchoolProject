@@ -193,10 +193,9 @@ CONSTRAINT [PK_Students] PRIMARY KEY CLUSTERED: Bu bölüm, "Students" tablosund
 
 CREATE VIEW [dbo].[vwActiveStudentsView] AS: Bu bölüm, "vwActiveStudentsView" adlı bir görünüm oluşturur. Görünüm, "Students" tablosundaki "Id", "Name", "Surname", "Email" ve "PhoneNumber" sütunlarını içeren öğrencilerin aktif olduğu (IsActive=1) durumlarındaki verileri seçer. Görünüm, bir tablo gibi davranarak belirli bir sorguyu paylaşmak ve kullanmak için kullanışlıdır.
 
--- Object: Table [dbo].[Exams]: Bu bölümde, "Exams" tablosu için bir nesne (tablo) oluşturulması amaçlanmıştır. Ancak, verilen kod bloğunda "Exams" tablosunun tamamı eksik olduğu için tam bir tablo oluşturulmamıştır. Sadece bu kodun başlangıç aşaması yer almaktadır.
+Object: Table [dbo].[Exams]: Bu bölümde, "Exams" tablosu için bir nesne (tablo) oluşturulması amaçlanmıştır. Ancak, verilen kod bloğunda "Exams" tablosunun tamamı eksik olduğu için tam bir tablo oluşturulmamıştır. Sadece bu kodun başlangıç aşaması yer almaktadır.
 
 SET ANSI_NULLS ON ve SET QUOTED_IDENTIFIER ON: Bu iki komut, ANSI_NULLS ve QUOTED_IDENTIFIER seçeneklerini etkinleştirir. Bu, SQL Server'ın ANSI standartlarına uygun çalışmasını sağlar.
 
 GO: "GO" ifadesi, SQL Server Management Studio gibi bazı SQL uygulamalarında bir sorgu yığınının bitişini belirtir ve SQL Server'a sorguyu yürütmesi için bir işaret verir.
 
-Bu kod bloğu, veritabanını düzenleyen ve veri işlemlerini gerçekleştiren bir SQL betiğine benziyor. Ancak, "Exams" tablosunun tamamlayıcı kodları eksik olduğu için yarım bir yapıya sahiptir. Eğer "Exams" tablosu için daha fazla kod veya tanımlama yapmak istiyorsanız, eksik olan kısmı tamamlayabilir veya gerekli işlemleri ekleyebilirsiniz.
