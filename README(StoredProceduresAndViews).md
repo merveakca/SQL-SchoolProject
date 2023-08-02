@@ -1,5 +1,5 @@
-
-
+# GetAttendanceByLessonProgramId Prosedürü
+```
 CREATE PROCEDURE [dbo].[GetAttendanceByLessonProgramId]
     @LessonProgramId INT
 AS
@@ -17,3 +17,4 @@ BEGIN
     INNER JOIN [dbo].[Students] AS [S] ON [A].[StudentId] = [S].[Id]
     WHERE [A].[LessonProgramId] = @LessonProgramId
 END
+```
