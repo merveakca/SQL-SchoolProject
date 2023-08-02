@@ -60,22 +60,16 @@ UpdatedDate
 
 **AÇIKLAMA:** 
 
-Exams Tablosu, aşağıdaki sütunları içermektedir: 
+Bu tabloda sınav bilgilerini tuttum;  
+Hangi öğrencinin hangi sınıfta olduğunu ve hangi branştan sınava gireceğinin verisini aldım.  
+Sınavın adını, (1. dönem 2. Fizik Sınavı gibi) hangi tarihte ve hangi saatte yapılacağı bilgisini tuttum.  
+Ve öğrencinin sınav sonucunun verisini girdim. Burayı doldurmayı zorunlu tutmadım çünkü telafi sınavına girecek öğrencilerin not girişleri aynı tarihte yapılmayabilir.  
+IsActive ile de sınavın aktif veya iptal durumunun bilgisini tuttum.  
 
-Id: sınavların kimlik numarasıdır  
-StudentId: bu alan, Students tablosuyla ilişkilendirilmiş olup, hangi öğrencinin hangi sınavı aldığını belirlemek için kullanılacaktır  
-ClassId: bu alan da Classes tablosuyla ilişkilendirilmiş olup, hangi sınıfın hangi sınavı aldığını belirlemek için kullanılacaktır  
-BranchId: sınavın düzenlendiği şubenin kimlik numarasını temsil eder. Şubeler, okulların farklı yerlerinde veya farklı binalarında olabilir ve bu alan, hangi şubenin hangi sınavı düzenlediğini belirlemek için kullanılacaktır  
-Name: sınavın adını temsil eder, örneğin "1. Dönem 1. Matematik Yazılı Sınavı" veya "2. Dönem 2. Fizik Yazılı Sınavı" gibi  
-Note: sınav sonucunda alınan notu temsil eder  
-ExamDate: sınavın yapıldığı tarihi ve saati temsil eder. Null olabilir, çünkü sınava giremeyip telafiye katılacak öğrenciler de olacaktır  
-IsActive: sınavın geçerli yada iptal olup olmadığını belirler  
-CreatedProfessionId: sınav verilerini oluşturan kişinin kimlik Id'sini tutar  
-CreatedDate: sınav verilerinin oluşturulduğu tarihi ve saati temsil eder  
-UpdatedProfessionId: sınav verilerini güncelleyen kişinin kimlik Id'sini tutar  
-UpdatedDate: sınav verilerinin güncellendiği tarihi ve saati temsil eder  
-
-Bu tablo, öğrenci sınavlarının bilgilerini saklamak ve bu bilgilere ilişkin ilişkili diğer tablolarla bağlantı kurmak için kullanılabilir. Örneğin, bu tabloyu öğrenci bilgileri ve sınıf bilgileri tablolarıyla ilişkilendirerek, belirli bir öğrencinin hangi sınavı aldığını ve bu sınavda aldığı notu kolayca bulabilirsiniz.
+CreatedProfessionId: sınav verilerini oluşturan kişinin kimlik Id'si  
+CreatedDate: sınav verilerinin oluşturulduğu tarihi ve saati  
+UpdatedProfessionId: sınav verilerini güncelleyen kişinin kimlik Id'si  
+UpdatedDate: sınav verilerinin güncellendiği tarihi ve saati  
 
 ---
 
