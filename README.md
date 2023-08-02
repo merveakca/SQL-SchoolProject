@@ -25,31 +25,19 @@ UpdatedDate
 
 **AÇIKLAMA:**  
 
-Students Tablosu, aşağıdaki sütunları içermektedir:  
+Bu tabloda öğrenciye ait bilgileri tutmak istedim.  
+LevelId ile öğrencinin hangi lise kademesi olduğunu (9. sınıf, 10. sınıf gibi),  
+ClassId ile sınıfının şubesinin ne olduğunu (9-A, 10-B, gibi),  
+öğrencinin adını ve soyadını kaydettim.  
+Email adresini yazmasını zorunlu tuttum çünkü okul sistemine o adres ile girebilecek.  
+Telefon numarasını null birakabilir çünkü her öğrencinin telefonu olmayabilir.  
+Anne ve Baba adını alıp herhangi birisinin telefon numarasını yazmasını zorunlu tuttum.  
+IsActive ile de öğrencinin kayıt durumunun aktifliğini belirledim  
 
-Id: kimlik numarasıdır 
-LevelId: lise kademesidir (9. sınıf, 10. sınıf gibi)  
-ClassId: sınıfın şubesidir (9-A, 10-B, gibi)  
-Name: öğrencinin adıdır  
-Surname: öğrencinin soyadıdır  
-Email: öğrenciye ait olan e-posta adresinidir. Null olamaz çünkü sisteme mail adresi ile giriş yapılacaktır  
-PhoneNumber: öğrencinin telefon numarasıdır 
-MotherName: Öğrencinin annesinin adını temsil eder  
-FatherName: Öğrencinin babasının adını temsil eder  
-ParentPhoneNumber: Öğrencinin velisinin telefon numarasını temsil eder ve null olamaz, iletişim için zorunludur  
-IsActive: Öğrencinin okula kayıt durumunun devam edip etmediğini temsil eder  
-CreatedProfessionId: Öğrencinin kaydını oluşturan kişinin Id'sini temsil eder  
-CreatedDate: Kaydın oluşturulduğu tarihi ve saati temsil eden değer  
-UpdatedProfessionId: Son güncellemeyi yapan kişinin Id'sini temsil eder  
-UpdatedDate: Son güncelleme tarihini ve saatini temsil eder  
-
-**Notlar**  
-
-Bu tablo, öğrencilerin temel bilgilerini içeren verileri saklamak için tasarlanmıştır.  
-CreatedProfessionId ve UpdatedProfessionId sütunları, verilerin oluşturulduğu ve güncellendiği meslek kimlik numaralarını ilişkilendirmek için kullanılabilir.  
-CreatedDate ve UpdatedDate sütunları, verilerin oluşturulma ve güncellenme zamanlarını saklamak için kullanılabilir.  
-PhoneNumber sütunu opsiyoneldir, çünkü bazı öğrencilerin telefon numaraları olmayabilir.  
-Bu tabloyu kullanarak, öğrencilere ilişkin verileri kolayca saklayabilir ve yönetebilirsiniz.  
+CreatedProfessionId: Öğrencinin kaydını oluşturan kişinin Id'si  
+CreatedDate: Kaydın oluşturulduğu tarihi ve saati  
+UpdatedProfessionId: Son güncellemeyi yapan kişinin Id'si  
+UpdatedDate: Son güncelleme tarihini ve saati  
 
 ---
 
