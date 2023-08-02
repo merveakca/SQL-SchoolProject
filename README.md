@@ -35,12 +35,9 @@ Students Tablosu, aşağıdaki sütunları içermektedir:
 *ParentPhoneNumber:* Öğrencinin velisinin telefon numarasını temsil eder ve null olamaz, iletişim için zorunludur  
 *IsActive:* Öğrencinin okula kayıt durumunun devam edip etmediğini temsil eder  
 *CreatedProfessionId:* Öğrencinin kaydını oluşturan kişinin Id'sini temsil eder  
-
-*CreatedDate:* Kaydın oluşturulduğu tarihi ve saatini temsil eden değer (opsiyonel).  
-
-*UpdatedProfessionId:* Son güncelleme yapıldığında atanmış olan meslek kimlik numarasını temsil eden tamsayı değeri (opsiyonel).  
-
-*UpdatedDate:* Son güncelleme tarihini ve saatini temsil eden değer (opsiyonel).  
+*CreatedDate:* Kaydın oluşturulduğu tarihi ve saati temsil eden değer  
+*UpdatedProfessionId:* Son güncellemeyi yapan kişinin Id'sini temsil eder  
+*UpdatedDate:* Son güncelleme tarihini ve saatini temsil eder  
 
 **Notlar**  
 
