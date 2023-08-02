@@ -130,7 +130,7 @@ CREATE TABLE [dbo].[Exams](
 	[ClassId] [int] NOT NULL,
 	[BranchId] [int] NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
-	[Note] [int] NOT NULL,
+	[Note] [int] NULL,
 	[ExamDate] [datetime] NULL,
 	[IsActive] [bit] NULL,
 	[CreatedProfessionId] [int] NULL,
