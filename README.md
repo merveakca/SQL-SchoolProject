@@ -23,23 +23,18 @@ UpdatedDate
 
 Students Tablosu, aşağıdaki sütunları içermektedir:  
 
-*Id:* Öğrenci kimlik numarasını temsil eden benzersiz bir tamsayı değeri.  
-*LevelId:* Öğrencinin lise kademesini belirler (9. sınıf, 10. sınıf...)  
-*ClassId:* Öğrencinin sınıfını belirler
-*Name:* Öğrencinin adını temsil eden metinsel değer (50 karakter veya daha az).  
-*Surname:* Öğrencinin soyadını temsil eden metinsel değer (50 karakter veya daha az).  
-*Email:* Öğrencinin e-posta adresini temsil eden metinsel değer (100 karakter veya daha az).  
-*PhoneNumber:* Öğrencinin telefon numarasını temsil eden metinsel değer (11 karakter uzunluğunda, opsiyonel).  
-
-*MotherName:* Öğrencinin annesinin adını temsil eden metinsel değer (50 karakter veya daha az).  
-
-*FatherName:* Öğrencinin babasının adını temsil eden metinsel değer (50 karakter veya daha az).  
-
-*ParentPhoneNumber:* Öğrencinin velisinin telefon numarasını temsil eden metinsel değer (11 karakter uzunluğunda).  
-
-*IsActive:* Öğrencinin etkinlik durumunu temsil eden mantıksal değer (aktif ise 1, değilse 0 veya boş).  
-
-*CreatedProfessionId:* Kayıt oluşturulduğunda atanmış olan meslek kimlik numarasını temsil eden tamsayı değeri (opsiyonel).  
+*Id:* Öğrenci kimlik numarasını temsil eden benzersiz bir tamsayı değeridir  
+*LevelId:* Öğrencinin lise kademesini belirler (9. sınıf, 10. sınıf gibi)  
+*ClassId:* Öğrencinin sınıfını şubesi ile belirler (9-A, 10-B, gibi)  
+*Name:* Öğrencinin adını temsil eder  
+*Surname:* Öğrencinin soyadını temsil eder  
+*Email:* Öğrencinin e-posta adresini temsil eder. Null olamaz çünkü sisteme mail adresi ile giriş yapılacaktır  
+*PhoneNumber:* Öğrencinin telefon numarasını temsil eder. Null olabilir. Çünkü her öğrencinin numarası olmayabilir  
+*MotherName:* Öğrencinin annesinin adını temsil eder  
+*FatherName:* Öğrencinin babasının adını temsil eder  
+*ParentPhoneNumber:* Öğrencinin velisinin telefon numarasını temsil eder ve null olamaz, iletişim için zorunludur  
+*IsActive:* Öğrencinin okula kayıt durumunun devam edip etmediğini temsil eder  
+*CreatedProfessionId:* Öğrencinin kaydını oluşturan kişinin Id'sini temsil eder  
 
 *CreatedDate:* Kaydın oluşturulduğu tarihi ve saatini temsil eden değer (opsiyonel).  
 
