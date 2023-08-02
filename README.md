@@ -26,7 +26,7 @@ UpdatedDate
 **AÇIKLAMA:**  
 
 Bu tabloda öğrenciye ait bilgileri tutmak istedim.  
-LevelId ile öğrencinin hangi lise kademesi olduğunu (9. sınıf, 10. sınıf gibi),  
+LevelId ile öğrencinin hangi lise kademesi olduğunu (9,10,11 ve 12. sınıf),  
 ClassId ile sınıfının şubesinin ne olduğunu (9-A, 10-B, gibi),  
 öğrencinin adını ve soyadını kaydettim.  
 Email adresini yazmasını zorunlu tuttum çünkü okul sistemine o adres ile girebilecek.  
@@ -122,15 +122,14 @@ UpdatedDate
 
 **AÇIKLAMA:**  
 
-Id: sınıfların benzersiz kimlik numaralarıdır  
-LevelId: Levels tablosu ile ilişkilidir, sınıfın kademesini belirler (9.sınıf, 10.sınıf,11.sınıf ve 12.sınıf)  
-ProfessionBranchId: sınıfın danışman öğretmeninin atandığı yerdir  
-Name: sınıfın adını tutar (9-A, 9-B, 10-A gibi)  
-IsActive: Sınıfın aktif olup olmadığını belirtir  
-CreatedProfessionId: sınıfı oluşturan kullanıcının Id'sidir  
-CreatedDate: Sınıfın oluşturulduğu tarih ve saat bilgisidir  
-UpdatedProfessionId: sınıf bilgisini güncelleyen kullanıcının Id'sidir  
-UpdatedDate: Sınıfın güncellendiği tarih ve saat bilgisidir  
+Bu tablomda sınıfların herbirinin kademesini (9,10,11 ve 12. sınıf) belirleyerek, her bir sınıfa bir danışman öğretmen atadım.  
+Sınıf isimlerini belirledim (9-A, 9-B, 10-A gibi).  
+IsActive ile de sınıfın aktif olup olmadığını belirttim.  
+  
+CreatedProfessionId: sınıfı oluşturan kullanıcının Id'si  
+CreatedDate: Sınıfın oluşturulduğu tarih ve saat bilgisi  
+UpdatedProfessionId: sınıf bilgisini güncelleyen kullanıcının Id'si  
+UpdatedDate: Sınıfın güncellendiği tarih ve saat bilgisi  
 
 ---
 
@@ -145,11 +144,8 @@ IsActive
 
 **AÇIKLAMA:**  
 
-Id: Ders programlarını benzersiz bir şekilde tanımlayan bir kimlik sütunu (Primary Key). Otomatik artan (IDENTITY), her yeni kayıt için bir öncekinden bir fazla değer alır ve boş bırakılamaz (NOT NULL).
-BranchId: Ders programının bağlı olduğu ders branşını belirten sayısal bir değer (Foreign Key). Bu, başka bir tablodaki ders branşı bilgilerine bağlantı yapar ve boş bırakılamaz (NOT NULL).
-Date: Ders programının yapılacağı tarih ve saat bilgisini içeren bir zaman damgası (datetime) alanı. Bu alan, ders programının ne zaman gerçekleşeceğini belirtmek için kullanılır ve boş bırakılamaz (NOT NULL).
-IsActive: Ders programının aktif olup olmadığını belirten mantıksal bir değer (bit). Bu alan, ders programının geçerli olup olmadığını gösterir. NULL değeri kabul edilebilir, yani ders programının aktiflik durumu belirtilmemiş olabilir.
-Bu tablo, bir eğitim kurumunda veya ders yönetim sisteminde kullanılarak ders programlarını yönetmek ve takip etmek için kullanılabilir. Her bir ders programı, belirli bir ders branşına ait olacak şekilde düzenlenir ve programın gerçekleşeceği tarih ve saat bilgisi tutulur. Ders programlarının geçmiş ve gelecek tarihlerine göre filtreleme yapılabilir ve ders programlarına ilişkin güncel bilgilerin takibi sağlanabilir.
+Bu tablomda hangi dersin hangi tarih ve saatte yapılacağı bilgisini tuttum.
+IsActive ile de ders programının aktif olup olmadığını belirttim
 
 ---
 
@@ -163,10 +159,8 @@ IsActive
 
 **AÇIKLAMA:**  
 
-Id: Seviyeleri benzersiz bir şekilde tanımlayan bir kimlik sütunu (Primary Key). Otomatik artan (IDENTITY), her yeni kayıt için bir öncekinden bir fazla değer alır ve boş bırakılamaz (NOT NULL).
-Name: Eğitim seviyesinin adını tutan metinsel (nvarchar) bir alan. Seviye adları, en fazla 50 karakter uzunluğunda olabilir ve boş bırakılamaz (NOT NULL).
-IsActive: Seviyenin aktif olup olmadığını belirten mantıksal bir değer (bit). Bu alan, seviyenin kullanımda olup olmadığını gösterir. NULL değeri kabul edilebilir, yani seviyenin aktiflik durumu belirtilmemiş olabilir.
-Bu tablo, bir eğitim kurumunda veya ders yönetim sisteminde kullanılarak farklı eğitim seviyelerinin (örneğin, ilkokul, ortaokul, lise) yönetimini sağlar. Her bir seviye, belirli bir eğitim düzeyine veya sınıf düzeyine ait olacak şekilde kaydedilir ve seviyelere göre filtreleme ve sınıflandırma yapılabilir. Ayrıca, seviyelerin geçmiş ve gelecek dönemlerine göre takibi ve yönetimi bu tablo üzerinden yapılabilir.
+Bu tablomu, sınıf kademeleri için tasarladım (9,10,11 ve 12. sınıf).
+Birçok tablo ile de ilişkili kullandım.
 
 ---
 
@@ -181,12 +175,9 @@ IsActive
 
 **AÇIKLAMA:**  
 
-Id: Meslek branşlarını benzersiz bir şekilde tanımlayan bir kimlik sütunu (Primary Key). Otomatik artan (IDENTITY), her yeni kayıt için bir öncekinden bir fazla değer alır ve boş bırakılamaz (NOT NULL).
-ProfessionId: Meslek branşının bağlı olduğu mesleği belirten sayısal bir değer (Foreign Key). Bu, başka bir tablodaki meslek bilgilerine bağlantı yapar ve boş bırakılamaz (NOT NULL).
-BranchId: Meslek branşının bağlı olduğu ders branşını belirten sayısal bir değer (Foreign Key). Bu, başka bir tablodaki ders branşı bilgilerine bağlantı yapar ve boş bırakılamaz (NOT NULL).
-IsActive: Meslek branşının aktif olup olmadığını belirten mantıksal bir değer (bit). Bu alan, meslek branşının kullanımda olup olmadığını gösterir. NULL değeri kabul edilebilir, yani meslek branşının aktiflik durumu belirtilmemiş olabilir.
-Açıklamalar:
-Bu tablo, meslekler ve bu mesleklerle ilişkilendirilmiş ders branşlarının yönetimi için kullanılabilir. Her bir kayıtta bir meslek branşı belirli bir mesleğe ve bir ders branşına atanır. Örneğin, "Doktor" mesleği "Tıp" ders branşıyla, "Mühendis" mesleği "Makine Mühendisliği" ders branşıyla ilişkilendirilebilir. Meslek branşlarının geçerli veya geçmiş durumları izlenebilir ve etkin olmayan meslek branşları arşivlenebilir. Bu tablo, eğitim kurumlarında, meslek odalarında ve benzeri alanlarda meslek ve ders branşlarının yönetimi için kullanışlı bir araçtır.
+Bu tablomda, okul içinde çalışan meslek gruplarına branş ataması yaptım.
+Yani Müdür ya da Müdür Yardımcısının ve diğer tüm öğretmenlerin branşı olmak zorunda olduğunu düşenerek oluşturdum.
+Bu meslek grupları dışında çalışan kişilere bu atamayı yapmadım (kat görevlisi, güvenlik, kantin görevlisi...).
 
 ---
 
