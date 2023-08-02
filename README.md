@@ -47,6 +47,9 @@ CreatedDate ve UpdatedDate sütunları, verilerin oluşturulma ve güncellenme z
 PhoneNumber sütunu opsiyoneldir, çünkü bazı öğrencilerin telefon numaraları olmayabilir.  
 Bu tabloyu kullanarak, öğrencilere ilişkin verileri kolayca saklayabilir ve yönetebilirsiniz.  
 
+---
+
+# Exams Table
 
 ```
 Id
@@ -66,3 +69,23 @@ UpdatedDate
 **AÇIKLAMA:** 
 
 Exams Tablosu, aşağıdaki sütunları içermektedir: 
+
+Id: sınavların kimlik numarasıdır  
+StudentId: bu alan, Students tablosuyla ilişkilendirilmiş olup, hangi öğrencinin hangi sınavı aldığını belirlemek için kullanılacaktır  
+ClassId: bu alan da Classes tablosuyla ilişkilendirilmiş olup, hangi sınıfın hangi sınavı aldığını belirlemek için kullanılacaktır  
+BranchId: sınavın düzenlendiği şubenin kimlik numarasını temsil eder. Şubeler, okulların farklı yerlerinde veya farklı binalarında olabilir ve bu alan, hangi şubenin hangi sınavı düzenlediğini belirlemek için kullanılacaktır  
+Name: sınavın adını temsil eder, örneğin "1. Dönem 1.Matematik Yazılı Sınavı" veya "2. Dönem 2.Fizik Yazılı Sınavı" gibi  
+Note: sınav sonucunda alınan notu temsil eder  
+ExamDate: Sınavın yapıldığı tarihi ve saati temsil eden datetime tipinde bir alan. Bu alan, sınavın ne zaman düzenlendiğini gösterir ve isteğe bağlı olarak NULL değerini alabilir.
+
+IsActive: Sınavın geçerli olup olmadığını belirten bit tipinde bir alan. Eğer sınav geçerliyse (örneğin henüz gerçekleşmemişse), bu alan TRUE değerini alır, aksi takdirde FALSE olabilir.
+
+CreatedProfessionId: Sınav verilerinin oluşturulduğu zaman ilgili meslek alanını temsil eden tamsayı tipinde bir alan. Bu alan, verinin oluşturulduğu meslek alanının kimliğini içerir.
+
+CreatedDate: Sınav verilerinin oluşturulduğu tarihi ve saati temsil eden datetime tipinde bir alan. Bu alan, verinin oluşturulduğu zamanı gösterir.
+
+UpdatedProfessionId: Sınav verilerinin güncellendiği zaman ilgili meslek alanını temsil eden tamsayı tipinde bir alan. Bu alan, verinin güncellendiği meslek alanının kimliğini içerir.
+
+UpdatedDate: Sınav verilerinin güncellendiği tarihi ve saati temsil eden datetime tipinde bir alan. Bu alan, verinin son güncelleme zamanını gösterir.
+
+Bu tablo, öğrenci sınavlarının bilgilerini saklamak ve bu bilgilere ilişkin ilişkili diğer tablolarla bağlantı kurmak için kullanılabilir. Örneğin, bu tabloyu öğrenci bilgileri ve sınıf bilgileri tablolarıyla ilişkilendirerek, belirli bir öğrencinin hangi sınavı aldığını ve bu sınavda aldığı notu kolayca bulabilirsiniz.
