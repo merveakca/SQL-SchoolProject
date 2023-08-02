@@ -101,3 +101,17 @@ IsInClass
 IsActive
 ```
 
+**AÇIKLAMA:**  
+
+Attendance Tablosu, aşağıdaki sütunları içermektedir:  
+
+Id: Katılım kayıtlarının kimlik numarasıdır  
+LessonProgramId: Katılımın kaydedildiği ders programını tanımlar  
+StudentId: Katılımın kaydedildiği öğrenciyi tanımlar  
+LessonTime: Katılımın kaydedildiği tarih ve saat bilgisini içerir
+IsInClass: Bir öğrencinin ders saatlerinde sınıfta olup olmadığını belirtir  
+IsActive: Katılım kaydının aktif olup olmadığını belirtir  
+
+**Notlar**  
+
+Bu tablo, öğrencilerin devam durumlarını ve katılımlarını izlemek için kullanılabilir. Örneğin, belirli bir tarihte hangi öğrencilerin derste olduğunu veya devamsız olduğunu belirlemek için kullanılabilir. Bu veriler, öğrenci performansının değerlendirilmesi ve öğrenci katılımının takibi gibi çeşitli analizler ve raporlar için de kullanılabilir.
