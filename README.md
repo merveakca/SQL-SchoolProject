@@ -1,5 +1,6 @@
 # SQL-SchoolProject
-
+# DataBase'imde Oluşturduğum Tablolarım ve Açıklamalarım
+# "My created database tables and their descriptions"
 ---
 
 # Students Table
@@ -105,13 +106,61 @@ IsActive
 
 Attendance Tablosu, aşağıdaki sütunları içermektedir:  
 
-Id: Katılım kayıtlarının kimlik numarasıdır  
-LessonProgramId: Katılımın kaydedildiği ders programını tanımlar  
-StudentId: Katılımın kaydedildiği öğrenciyi tanımlar  
-LessonTime: Katılımın kaydedildiği tarih ve saat bilgisini içerir
-IsInClass: Bir öğrencinin ders saatlerinde sınıfta olup olmadığını belirtir  
-IsActive: Katılım kaydının aktif olup olmadığını belirtir  
+Id: yapılan yoklamanın kimlik numarasıdır  
+LessonProgramId: ders programını tanımlar  
+StudentId: derse katılan öğrenciyi tanımlar  
+LessonTime: yoklamanın yapıldığı dersin tarih ve saat bilgisini içerir  
+IsInClass: öğrencinin ders saatlerinde sınıfta olup olmadığını belirtir  
+IsActive: yapılan yoklamanın aktif olup olmadığını belirtir  
 
 **Notlar**  
 
 Bu tablo, öğrencilerin devam durumlarını ve katılımlarını izlemek için kullanılabilir. Örneğin, belirli bir tarihte hangi öğrencilerin derste olduğunu veya devamsız olduğunu belirlemek için kullanılabilir. Bu veriler, öğrenci performansının değerlendirilmesi ve öğrenci katılımının takibi gibi çeşitli analizler ve raporlar için de kullanılabilir.
+
+---
+
+# Branches Table
+
+```
+Id
+Name
+IsActive
+```
+
+**AÇIKLAMA:**  
+
+Id: branşın kimlik numarasıdır  
+Name: Ders branşının adını tutar (Fizik, Kimya, Biyoloji, Matematik, Edebiyat...)  
+IsActive: dersin okulda verilip verilmediğini belirler  
+
+**Notlar**  
+
+Bu tablo, bir eğitim kurumunda veya ders programı yönetim sisteminde kullanılarak derslerin farklı branşlara ayrılmasını ve bu branşlarla ilişkilendirilmesini sağlar. Örneğin, Matematik, Fen Bilimleri, Edebiyat gibi ders branşları bu tabloda kaydedilebilir. Ayrıca, ders programlarının oluşturulması ve derslerin bu branşlara göre planlanması için kullanılabilir.
+
+---
+
+# Classes Table
+
+```
+Id
+LevelId
+ProfessionBranchId
+Name
+IsActive
+CreatedProfessionId
+CreatedDate
+UpdatedProfessionId
+UpdatedDate
+```
+
+**AÇIKLAMA:**  
+
+Id: sınıfların benzersiz kimlik numaralarıdır  
+LevelId: Levels tablosu ile ilişkilidir, sınıfın kademesini belirler (9.sınıf, 10.sınıf,11.sınıf ve 12.sınıf)  
+ProfessionBranchId: sınıfın danışman öğretmeninin atandığı yerdir  
+Name: sınıfın adını tutar (9-A, 9-B, 10-A gibi)
+IsActive: Sınıfın aktif olup olmadığını belirtir  
+CreatedProfessionId: sınıfı oluşturan kullanıcının Id'sidir
+CreatedDate: Sınıfın oluşturulduğu tarih ve saat bilgisini içeren bir zaman damgası (datetime) alanı. Sınıfın ne zaman oluşturulduğunu kaydetmek için kullanılır.
+UpdatedProfessionId: Sınıf güncellendiğinde ilişkilendirilen güncellenen meslek branşı kimlik numarasını tutan sayısal bir değer (Foreign Key). Bu, başka bir tablodaki meslek branşı bilgilerine bağlantı yapar. İlgili meslek branşı güncellendiğinde bu alan doldurulabilir.
+UpdatedDate: Sınıfın güncellendiği tarih ve saat bilgisini içeren bir zaman damgası (datetime) alanı. Sınıfın ne zaman güncellendiğini kaydetmek için kullanılır. Bu alan, sınıf güncellendiğinde otomatik olarak güncellenir.
