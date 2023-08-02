@@ -86,18 +86,8 @@ IsActive
 
 **AÇIKLAMA:**  
 
-Attendance Tablosu, aşağıdaki sütunları içermektedir:  
-
-Id: yapılan yoklamanın kimlik numarasıdır  
-LessonProgramId: ders programını tanımlar  
-StudentId: derse katılan öğrenciyi tanımlar  
-LessonTime: yoklamanın yapıldığı dersin tarih ve saat bilgisini içerir  
-IsInClass: öğrencinin ders saatlerinde sınıfta olup olmadığını belirtir  
-IsActive: yapılan yoklamanın aktif olup olmadığını belirtir  
-
-**Notlar**  
-
-Bu tablo, öğrencilerin devam durumlarını ve katılımlarını izlemek için kullanılabilir. Örneğin, belirli bir tarihte hangi öğrencilerin derste olduğunu veya devamsız olduğunu belirlemek için kullanılabilir. Bu veriler, öğrenci performansının değerlendirilmesi ve öğrenci katılımının takibi gibi çeşitli analizler ve raporlar için de kullanılabilir.
+Bu tabloda, öğrencilerin ders programına göre, hangi branşın, hangi tarih ve saatinde sınıfta olup olmadıkları bilgisini tuttum.  
+Tuttuğum bu verileri, öğrencilerimin performanslarının değerlendirilmesi ve derse devamının takibi gibi çeşitli analizler ve raporlar için de kullanabilirim.  
 
 ---
 
@@ -111,13 +101,8 @@ IsActive
 
 **AÇIKLAMA:**  
 
-Id: branşın kimlik numarasıdır  
-Name: Ders branşının adını tutar (Fizik, Kimya, Biyoloji, Matematik, Edebiyat...)  
-IsActive: dersin okulda verilip verilmediğini belirler  
-
-**Notlar**  
-
-Bu tablo, bir eğitim kurumunda veya ders programı yönetim sisteminde kullanılarak derslerin farklı branşlara ayrılmasını ve bu branşlarla ilişkilendirilmesini sağlar. Örneğin, Matematik, Fen Bilimleri, Edebiyat gibi ders branşları bu tabloda kaydedilebilir. Ayrıca, ders programlarının oluşturulması ve derslerin bu branşlara göre planlanması için kullanılabilir.
+Bu tablomda lise kademesinde verilebilecek branşların bilgisini tuttum (Fizik, Kimya, Biyoloji, Matematik, Edebiyat...).  
+IsActive ile de herhangi bir dersin okulda verilip verilmediğini belirttim  
 
 ---
 
