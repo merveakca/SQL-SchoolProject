@@ -74,17 +74,16 @@ Id: sınavların kimlik numarasıdır
 StudentId: bu alan, Students tablosuyla ilişkilendirilmiş olup, hangi öğrencinin hangi sınavı aldığını belirlemek için kullanılacaktır  
 ClassId: bu alan da Classes tablosuyla ilişkilendirilmiş olup, hangi sınıfın hangi sınavı aldığını belirlemek için kullanılacaktır  
 BranchId: sınavın düzenlendiği şubenin kimlik numarasını temsil eder. Şubeler, okulların farklı yerlerinde veya farklı binalarında olabilir ve bu alan, hangi şubenin hangi sınavı düzenlediğini belirlemek için kullanılacaktır  
-Name: sınavın adını temsil eder, örneğin "1. Dönem 1.Matematik Yazılı Sınavı" veya "2. Dönem 2.Fizik Yazılı Sınavı" gibi  
+Name: sınavın adını temsil eder, örneğin "1. Dönem 1. Matematik Yazılı Sınavı" veya "2. Dönem 2. Fizik Yazılı Sınavı" gibi  
 Note: sınav sonucunda alınan notu temsil eder  
-ExamDate: Sınavın yapıldığı tarihi ve saati temsil eden datetime tipinde bir alan. Bu alan, sınavın ne zaman düzenlendiğini gösterir ve isteğe bağlı olarak NULL değerini alabilir.
+ExamDate: Sınavın yapıldığı tarihi ve saati temsil eder. Null olabilir, çünkü sınava giremeyip telafiye katılacak öğrenciler de olacaktır  
+IsActive: sınavın geçerli yada iptal olup olmadığını belirler  
 
-IsActive: Sınavın geçerli olup olmadığını belirten bit tipinde bir alan. Eğer sınav geçerliyse (örneğin henüz gerçekleşmemişse), bu alan TRUE değerini alır, aksi takdirde FALSE olabilir.
+CreatedProfessionId: Sınav verilerini oluşturan kişinin kimlik Id'sini tutar
 
-CreatedProfessionId: Sınav verilerinin oluşturulduğu zaman ilgili meslek alanını temsil eden tamsayı tipinde bir alan. Bu alan, verinin oluşturulduğu meslek alanının kimliğini içerir.
+CreatedDate: Sınav verilerinin oluşturulduğu tarihi ve saati temsil eder
 
-CreatedDate: Sınav verilerinin oluşturulduğu tarihi ve saati temsil eden datetime tipinde bir alan. Bu alan, verinin oluşturulduğu zamanı gösterir.
-
-UpdatedProfessionId: Sınav verilerinin güncellendiği zaman ilgili meslek alanını temsil eden tamsayı tipinde bir alan. Bu alan, verinin güncellendiği meslek alanının kimliğini içerir.
+UpdatedProfessionId: Sınav verilerini güncelleyen kişinin kimlik Id'sini tutar
 
 UpdatedDate: Sınav verilerinin güncellendiği tarihi ve saati temsil eden datetime tipinde bir alan. Bu alan, verinin son güncelleme zamanını gösterir.
 
