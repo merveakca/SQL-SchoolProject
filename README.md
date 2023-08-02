@@ -26,7 +26,7 @@ UpdatedDate
 **AÇIKLAMA:**  
 
 Bu tabloda öğrenciye ait bilgileri tutmak istedim.  
-LevelId ile öğrencinin hangi lise kademesi olduğunu (9,10,11 ve 12. sınıf),  
+LevelId ile öğrencinin hangi lise kademesinde olduğunu (9,10,11 ve 12. sınıf),  
 ClassId ile sınıfının şubesinin ne olduğunu (9-A, 10-B, gibi),  
 öğrencinin adını ve soyadını kaydettim.  
 Email adresini yazmasını zorunlu tuttum çünkü okul sistemine o adres ile girebilecek.  
