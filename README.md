@@ -158,9 +158,106 @@ UpdatedDate
 Id: sınıfların benzersiz kimlik numaralarıdır  
 LevelId: Levels tablosu ile ilişkilidir, sınıfın kademesini belirler (9.sınıf, 10.sınıf,11.sınıf ve 12.sınıf)  
 ProfessionBranchId: sınıfın danışman öğretmeninin atandığı yerdir  
-Name: sınıfın adını tutar (9-A, 9-B, 10-A gibi)
+Name: sınıfın adını tutar (9-A, 9-B, 10-A gibi)  
 IsActive: Sınıfın aktif olup olmadığını belirtir  
-CreatedProfessionId: sınıfı oluşturan kullanıcının Id'sidir
-CreatedDate: Sınıfın oluşturulduğu tarih ve saat bilgisini içeren bir zaman damgası (datetime) alanı. Sınıfın ne zaman oluşturulduğunu kaydetmek için kullanılır.
-UpdatedProfessionId: Sınıf güncellendiğinde ilişkilendirilen güncellenen meslek branşı kimlik numarasını tutan sayısal bir değer (Foreign Key). Bu, başka bir tablodaki meslek branşı bilgilerine bağlantı yapar. İlgili meslek branşı güncellendiğinde bu alan doldurulabilir.
-UpdatedDate: Sınıfın güncellendiği tarih ve saat bilgisini içeren bir zaman damgası (datetime) alanı. Sınıfın ne zaman güncellendiğini kaydetmek için kullanılır. Bu alan, sınıf güncellendiğinde otomatik olarak güncellenir.
+CreatedProfessionId: sınıfı oluşturan kullanıcının Id'sidir  
+CreatedDate: Sınıfın oluşturulduğu tarih ve saat bilgisidir  
+UpdatedProfessionId: sınıf bilgisini güncelleyen kullanıcının Id'sidir  
+UpdatedDate: Sınıfın güncellendiği tarih ve saat bilgisidir  
+
+---
+
+# LessonPrograms Table
+
+```
+Id
+BranchId
+Date
+IsActive
+```
+
+**AÇIKLAMA:**  
+
+Id: Ders programlarını benzersiz bir şekilde tanımlayan bir kimlik sütunu (Primary Key). Otomatik artan (IDENTITY), her yeni kayıt için bir öncekinden bir fazla değer alır ve boş bırakılamaz (NOT NULL).
+BranchId: Ders programının bağlı olduğu ders branşını belirten sayısal bir değer (Foreign Key). Bu, başka bir tablodaki ders branşı bilgilerine bağlantı yapar ve boş bırakılamaz (NOT NULL).
+Date: Ders programının yapılacağı tarih ve saat bilgisini içeren bir zaman damgası (datetime) alanı. Bu alan, ders programının ne zaman gerçekleşeceğini belirtmek için kullanılır ve boş bırakılamaz (NOT NULL).
+IsActive: Ders programının aktif olup olmadığını belirten mantıksal bir değer (bit). Bu alan, ders programının geçerli olup olmadığını gösterir. NULL değeri kabul edilebilir, yani ders programının aktiflik durumu belirtilmemiş olabilir.
+Bu tablo, bir eğitim kurumunda veya ders yönetim sisteminde kullanılarak ders programlarını yönetmek ve takip etmek için kullanılabilir. Her bir ders programı, belirli bir ders branşına ait olacak şekilde düzenlenir ve programın gerçekleşeceği tarih ve saat bilgisi tutulur. Ders programlarının geçmiş ve gelecek tarihlerine göre filtreleme yapılabilir ve ders programlarına ilişkin güncel bilgilerin takibi sağlanabilir.
+
+---
+
+# Levels Table
+
+```
+Id
+Name
+IsActive
+```
+
+**AÇIKLAMA:**  
+
+Id: Seviyeleri benzersiz bir şekilde tanımlayan bir kimlik sütunu (Primary Key). Otomatik artan (IDENTITY), her yeni kayıt için bir öncekinden bir fazla değer alır ve boş bırakılamaz (NOT NULL).
+Name: Eğitim seviyesinin adını tutan metinsel (nvarchar) bir alan. Seviye adları, en fazla 50 karakter uzunluğunda olabilir ve boş bırakılamaz (NOT NULL).
+IsActive: Seviyenin aktif olup olmadığını belirten mantıksal bir değer (bit). Bu alan, seviyenin kullanımda olup olmadığını gösterir. NULL değeri kabul edilebilir, yani seviyenin aktiflik durumu belirtilmemiş olabilir.
+Bu tablo, bir eğitim kurumunda veya ders yönetim sisteminde kullanılarak farklı eğitim seviyelerinin (örneğin, ilkokul, ortaokul, lise) yönetimini sağlar. Her bir seviye, belirli bir eğitim düzeyine veya sınıf düzeyine ait olacak şekilde kaydedilir ve seviyelere göre filtreleme ve sınıflandırma yapılabilir. Ayrıca, seviyelerin geçmiş ve gelecek dönemlerine göre takibi ve yönetimi bu tablo üzerinden yapılabilir.
+
+---
+
+# ProfessionBranch Table
+
+```
+
+```
+
+**AÇIKLAMA:**  
+
+---
+
+# ProfessionRoles Table
+
+```
+
+```
+
+**AÇIKLAMA:**  
+
+---
+
+# Professions Table
+
+```
+
+```
+
+**AÇIKLAMA:**  
+
+---
+
+# Roles Table
+
+```
+
+```
+
+**AÇIKLAMA:**  
+
+---
+
+# Topics Table
+
+```
+
+```
+
+**AÇIKLAMA:**  
+
+---
+
+# Units Table
+
+```
+
+```
+
+**AÇIKLAMA:**  
+
