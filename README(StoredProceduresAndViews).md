@@ -1,22 +1,26 @@
 # GetAttendanceByLessonProgramId Prosedürü
 ```
-CREATE PROCEDURE [dbo].[GetAttendanceByLessonProgramId]
-    @LessonProgramId INT
+USE [SchoolProject]
+GO
+CREATE OR ALTER PROCEDURE [dbo].[GetAttendanceStatusByStudentId]
+    @StudentId INT
 AS
 BEGIN
+    SET NOCOUNT ON;
+
     SELECT 
-        [A].[Id] AS [AttendanceId],
-        [A].[LessonProgramId],
-        [A].[StudentId],
-        [A].[LessonTime],
-        [A].[IsInClass],
-        [A].[IsActive],
-        [S].[Name] AS [StudentName],
-        [S].[Surname] AS [StudentSurname]
-    FROM [dbo].[Attendance] AS [A]
-    INNER JOIN [dbo].[Students] AS [S] ON [A].[StudentId] = [S].[Id]
-    WHERE [A].[LessonProgramId] = @LessonProgramId
+        S.Name AS 'Öğrencinin Adı',
+		S.Surname AS 'Öğrencinin Soyadı',
+        B.Name AS 'Ders Adı',
+        LessonTime AS 'Dersin Zamanı',
+        IsInClass AS 'Yoklama'
+    FROM [dbo].[Attendance] A
+	Left Join LessonPrograms L on A.LessonProgramId=L.Id
+	Left Join Branches B on L.BranchId=B.Id
+	Left Join Students S on A.StudentId=S.Id
+    WHERE StudentId = @StudentId;
 END
+GO
 ```
 
 **AÇIKLAMA:**  
