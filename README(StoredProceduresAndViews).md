@@ -10,7 +10,7 @@ BEGIN
 
     SELECT 
         S.Name AS 'Öğrencinin Adı',
-		S.Surname AS 'Öğrencinin Soyadı',
+	S.Surname AS 'Öğrencinin Soyadı',
         B.Name AS 'Ders Adı',
         LessonTime AS 'Dersin Zamanı',
         IsInClass AS 'Yoklama'
@@ -25,7 +25,7 @@ GO
 
 **AÇIKLAMA:**  
 
-Bu prosedür, Attendance ve Students tablolarını kullanarak,  
+Bu prosedür, Attendance, LessonPrograms, Branches ve Students tablolarını kullanarak,  
 öğrencilerin, belirlediğimiz derslerdeki devam durumlarının bilgilerini alabilmek için tasarlanmıştır.  
 
 ---
