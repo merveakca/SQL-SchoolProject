@@ -49,7 +49,7 @@ END
 
 **AÇIKLAMA:**  
 
-
+Yeni öğrenci ekleyen bir prosedürdür.
 
 ---
 
