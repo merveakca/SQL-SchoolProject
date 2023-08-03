@@ -105,7 +105,9 @@ END
 
 **AÇIKLAMA:** 
 
-Sınavların, sınıf sınıf hangi dersten sınava girildiği bilgisi ve öğrencilerin bu sınavlardan aldıkları notların bilgisini, tarih ve saat belirterek bize verecek olan prosedürdür.
+Sınavların, sınıflara göre, hangi dersten sınava girildiği bilgisini  
+ve öğrencilerin bu sınavlardan aldıkları notların bilgisini,  
+tarih ve saat belirterek bize verecek olan prosedürdür.
 
 ---
 
