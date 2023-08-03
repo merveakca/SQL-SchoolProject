@@ -157,5 +157,5 @@ Left Join Branches B ON E.BranchId=B.Id
 
 **AÇIKLAMA:** 
 
-Öğrencinin adı, soyadı, sınıfını, hangi branştan hangi sınava girdiğini ve kaç aldığını gösteren bir sanal tablodur.
+Öğrencinin adı, soyadı, sınıfı, hangi dersten hangi sınava girdiğini ve notunu gösteren sanal tablodur.
 
