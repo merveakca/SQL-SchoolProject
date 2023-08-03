@@ -72,8 +72,38 @@ BEGIN
 
 **AÇIKLAMA:**  
 
+Sınıf geçme, taktir ve teşekkür belgelerini alabilme durumlarında kullanmamız gereken önemli bir bilgidir devamsızlık durumu.  
+Bundan dolayı her öğrenci için ayrı ayrı girdikleri ders sayısı ve gelemedikleri günlerin sayısı alınarak devam durumlarını yüzdelik hesaplamayla bize verebilecek bir prosedürdür.
 
+---
 
+# 
+
+```
+
+```
+
+**AÇIKLAMA:** 
+
+---
+
+# 
+
+```
+
+```
+
+**AÇIKLAMA:** 
+
+---
+
+# 
+
+```
+
+```
+
+**AÇIKLAMA:** 
 
 
 
