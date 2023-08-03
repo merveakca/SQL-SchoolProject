@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [SchoolProject]    Script Date: 1.08.2023 04:10:15 ******/
+/****** Object:  Database [SchoolProject]    Script Date: 4.08.2023 01:05:20 ******/
 CREATE DATABASE [SchoolProject]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [SchoolProject] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLE
 GO
 USE [SchoolProject]
 GO
-/****** Object:  Table [dbo].[Students]    Script Date: 1.08.2023 04:10:15 ******/
+/****** Object:  Table [dbo].[Students]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,17 +109,94 @@ CREATE TABLE [dbo].[Students](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  View [dbo].[vwActiveStudentsView]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  Table [dbo].[LessonPrograms]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE VIEW [dbo].[vwActiveStudentsView] AS
-SELECT Id, Name, Surname, Email, PhoneNumber
-FROM Students
-WHERE IsActive = 1;
+CREATE TABLE [dbo].[LessonPrograms](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[BranchId] [int] NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[IsActive] [bit] NULL,
+ CONSTRAINT [PK_Polls] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Exams]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  Table [dbo].[Attendance]    Script Date: 4.08.2023 01:05:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Attendance](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[LessonProgramId] [int] NOT NULL,
+	[StudentId] [int] NOT NULL,
+	[LessonTime] [datetime] NOT NULL,
+	[IsInClass] [bit] NOT NULL,
+	[IsActive] [bit] NULL,
+ CONSTRAINT [PK_Attendance] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Branches]    Script Date: 4.08.2023 01:05:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Branches](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[IsActive] [bit] NULL,
+ CONSTRAINT [PK_Branches] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  View [dbo].[vwStudentAttandenceView]    Script Date: 4.08.2023 01:05:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+    CREATE VIEW [dbo].[vwStudentAttandenceView] AS
+	SELECT 
+        S.Name AS 'Öğrencinin Adı',
+	S.Surname AS 'Öğrencinin Soyadı',
+        B.Name AS 'Ders Adı',
+        LessonTime AS 'Dersin Zamanı',
+        IsInClass AS 'Yoklama'
+    FROM [dbo].[Attendance] A
+	Left Join LessonPrograms L on A.LessonProgramId=L.Id
+	Left Join Branches B on L.BranchId=B.Id
+	Left Join Students S on A.StudentId=S.Id
+GO
+/****** Object:  Table [dbo].[Classes]    Script Date: 4.08.2023 01:05:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Classes](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[LevelId] [int] NOT NULL,
+	[ProfessionBranchId] [int] NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[IsActive] [bit] NULL,
+	[CreatedProfessionId] [int] NULL,
+	[CreatedDate] [datetime] NULL,
+	[UpdatedProfessionId] [int] NULL,
+	[UpdatedDate] [datetime] NULL,
+ CONSTRAINT [PK_Classes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Exams]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,94 +220,27 @@ CREATE TABLE [dbo].[Exams](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  View [dbo].[vwExamResultsView]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  View [dbo].[vwExamResultsView]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW [dbo].[vwExamResultsView] AS
 SELECT 
-    S.Name AS StudentName,
-    S.Surname AS StudentSurname,
-    E.ClassId,
-    E.BranchId,
+    S.Name AS 'Öğrencinin Adı',
+    S.Surname AS 'Öğrencinin Soyadı',
+    C.Name AS 'Sınıfı',
+    B.Name AS 'Dersi',
     E.Name AS ExamName,
     E.Note AS ExamNote,
     E.ExamDate
 FROM Exams E
-INNER JOIN Students S ON E.StudentId = S.Id;
+Left Join Students S ON E.StudentId = S.Id
+Left Join Classes C ON E.ClassId=C.Id
+Left Join Branches B ON E.BranchId=B.Id
+
 GO
-/****** Object:  Table [dbo].[Attendance]    Script Date: 1.08.2023 04:10:16 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Attendance](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[LessonProgramId] [int] NOT NULL,
-	[StudentId] [int] NOT NULL,
-	[LessonTime] [datetime] NOT NULL,
-	[IsInClass] [bit] NOT NULL,
-	[IsActive] [bit] NULL,
- CONSTRAINT [PK_Attendance] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Branches]    Script Date: 1.08.2023 04:10:16 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Branches](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[IsActive] [bit] NULL,
- CONSTRAINT [PK_Branches] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Classes]    Script Date: 1.08.2023 04:10:16 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Classes](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[LevelId] [int] NOT NULL,
-	[ProfessionBranchId] [int] NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[IsActive] [bit] NULL,
-	[CreatedProfessionId] [int] NULL,
-	[CreatedDate] [datetime] NULL,
-	[UpdatedProfessionId] [int] NULL,
-	[UpdatedDate] [datetime] NULL,
- CONSTRAINT [PK_Classes] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[LessonPrograms]    Script Date: 1.08.2023 04:10:16 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[LessonPrograms](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[BranchId] [int] NOT NULL,
-	[Date] [datetime] NOT NULL,
-	[IsActive] [bit] NULL,
- CONSTRAINT [PK_Polls] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Levels]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  Table [dbo].[Levels]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -245,7 +255,7 @@ CREATE TABLE [dbo].[Levels](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProfessionBranch]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  Table [dbo].[ProfessionBranch]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -261,7 +271,7 @@ CREATE TABLE [dbo].[ProfessionBranch](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProfessionRoles]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  Table [dbo].[ProfessionRoles]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -281,7 +291,7 @@ CREATE TABLE [dbo].[ProfessionRoles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Professions]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  Table [dbo].[Professions]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -304,7 +314,7 @@ CREATE TABLE [dbo].[Professions](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Roles]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  Table [dbo].[Roles]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -319,7 +329,7 @@ CREATE TABLE [dbo].[Roles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Topics]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  Table [dbo].[Topics]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -339,7 +349,7 @@ CREATE TABLE [dbo].[Topics](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Units]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  Table [dbo].[Units]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -445,80 +455,53 @@ REFERENCES [dbo].[Levels] ([Id])
 GO
 ALTER TABLE [dbo].[Units] CHECK CONSTRAINT [FK_Units_Levels]
 GO
-/****** Object:  StoredProcedure [dbo].[GetAttendanceByLessonProgramId]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  StoredProcedure [dbo].[AddStudent]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[GetAttendanceByLessonProgramId]
-    @LessonProgramId INT
+CREATE PROCEDURE [dbo].[AddStudent]
+	@LevelId int,
+	@ClassId int,
+	@Name nvarchar(50),
+	@Surname nvarchar(50),
+	@Email nvarchar(50),
+	@PhoneNumber nvarchar(50),
+	@MotherName nvarchar(50),
+	@FatherName nvarchar(50),
+	@ParentPhoneNumber nvarchar(50),
+	@CreatedProfessionId int,
+	@UpdatedProfessionId int
+AS
+BEGIN
+	Insert Into Students Values(@LevelId,@ClassId,@Name,@Surname,@Email,@PhoneNumber,@MotherName,@FatherName,
+	@ParentPhoneNumber,1,@CreatedProfessionId,GETDATE(),@UpdatedProfessionId,GETDATE())
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[GetAttendanceByStudentId]    Script Date: 4.08.2023 01:05:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE   PROCEDURE [dbo].[GetAttendanceByStudentId]
+    @StudentId INT
 AS
 BEGIN
     SELECT 
-        [A].[Id] AS [AttendanceId],
-        [A].[LessonProgramId],
-        [A].[StudentId],
-        [A].[LessonTime],
-        [A].[IsInClass],
-        [A].[IsActive],
-        [S].[Name] AS [StudentName],
-        [S].[Surname] AS [StudentSurname]
-    FROM [dbo].[Attendance] AS [A]
-    INNER JOIN [dbo].[Students] AS [S] ON [A].[StudentId] = [S].[Id]
-    WHERE [A].[LessonProgramId] = @LessonProgramId
+        S.Name AS 'Öğrencinin Adı',
+	S.Surname AS 'Öğrencinin Soyadı',
+        B.Name AS 'Ders Adı',
+        LessonTime AS 'Dersin Zamanı',
+        IsInClass AS 'Yoklama'
+    FROM [dbo].[Attendance] A
+	Left Join LessonPrograms L on A.LessonProgramId=L.Id
+	Left Join Branches B on L.BranchId=B.Id
+	Left Join Students S on A.StudentId=S.Id
+    WHERE StudentId = @StudentId;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[GetAttendanceStatistics]    Script Date: 1.08.2023 04:10:16 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[GetAttendanceStatistics]
-    @StudentName NVARCHAR(50),
-    @StudentSurname NVARCHAR(50)
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    DECLARE @StudentId INT
-
-    -- Öğrencinin Id'sini bulma
-    SELECT @StudentId = Id
-    FROM dbo.Professions
-    WHERE Name = @StudentName AND Surname = @StudentSurname
-
-    IF @StudentId IS NOT NULL
-    BEGIN
-        -- Öğrencinin katıldığı ders sayısı
-        DECLARE @TotalAttendance INT
-        SELECT @TotalAttendance = COUNT(*)
-        FROM dbo.Attendance
-        WHERE StudentId = @StudentId AND IsInClass = 1
-
-        -- Öğrencinin kaçırdığı ders sayısı
-        DECLARE @TotalMissed INT
-        SELECT @TotalMissed = COUNT(*)
-        FROM dbo.Attendance
-        WHERE StudentId = @StudentId AND IsInClass = 0
-
-        -- Devamsızlık yüzdesi
-        DECLARE @AttendancePercentage FLOAT
-        SET @AttendancePercentage = 100.0 * @TotalAttendance / (CASE WHEN @TotalAttendance + @TotalMissed = 0 THEN 1 ELSE @TotalAttendance + @TotalMissed END)
-
-        -- Sonuçları döndürme
-        SELECT @StudentName AS StudentName,
-               @StudentSurname AS StudentSurname,
-               @TotalAttendance AS TotalAttendance,
-               @TotalMissed AS TotalMissed,
-               @AttendancePercentage AS AttendancePercentage
-    END
-    ELSE
-    BEGIN
-        PRINT 'Öğrenci bulunamadı.'
-    END
-END
-GO
-/****** Object:  StoredProcedure [dbo].[GetStudentExams]    Script Date: 1.08.2023 04:10:16 ******/
+/****** Object:  StoredProcedure [dbo].[GetStudentExams]    Script Date: 4.08.2023 01:05:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -528,22 +511,21 @@ CREATE PROCEDURE [dbo].[GetStudentExams]
 AS
 BEGIN
     SELECT
-        E.Id AS ExamId,
-        C.Name AS ClassName,
-        B.Name AS BranchName,
-        E.Name AS ExamName,
-        E.Note,
-        E.ExamDate,
-        E.IsActive
-    FROM
-        dbo.Exams E
-    INNER JOIN
-        dbo.Classes C ON E.ClassId = C.Id
-    INNER JOIN
-        dbo.Branches B ON E.BranchId = B.Id
-    WHERE
-        E.StudentId = @StudentId;
+		S.Name AS 'Öğrencinin Adı',
+		S.Surname AS 'Öğrencinin Soyadı',
+        C.Name AS 'Sınıfı',
+        B.Name AS 'Dersi',
+        E.Name AS 'Sınavı',
+        E.Note AS 'Sınav Notu',
+        E.ExamDate 'Sınav Tarihi'
+    FROM Exams E
+    LEFT JOIN Classes C ON E.ClassId = C.Id
+    LEFT JOIN Branches B ON E.BranchId = B.Id
+	LEFT JOIN Students S ON E.StudentId=S.Id
+    WHERE E.StudentId = @StudentId;
 END
+
+
 GO
 USE [master]
 GO
