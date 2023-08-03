@@ -142,15 +142,17 @@ Bütün öğrencilerin yoklama bilgilerinin bulunduğu sanal tablomuzdur.
 ```
 CREATE VIEW [dbo].[vwExamResultsView] AS
 SELECT 
-    S.Name AS StudentName,
-    S.Surname AS StudentSurname,
-    E.ClassId,
-    E.BranchId,
+    S.Name AS 'Öğrencinin Adı',
+    S.Surname AS 'Öğrencinin Soyadı',
+    C.Name AS 'Sınıfı',
+    B.Name AS 'Dersi',
     E.Name AS ExamName,
     E.Note AS ExamNote,
     E.ExamDate
 FROM Exams E
-INNER JOIN Students S ON E.StudentId = S.Id;
+Left Join Students S ON E.StudentId = S.Id
+Left Join Classes C ON E.ClassId=C.Id
+Left Join Branches B ON E.BranchId=B.Id
 ```
 
 **AÇIKLAMA:** 
