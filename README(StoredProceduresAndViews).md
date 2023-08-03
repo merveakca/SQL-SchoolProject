@@ -109,13 +109,18 @@ Sınavların, sınıf sınıf hangi dersten sınava girildiği bilgisi ve öğre
 
 ---
 
-# 
+# vwActiveStudentsView
 
 ```
-
+CREATE VIEW [dbo].[vwActiveStudentsView] AS
+SELECT Id, Name, Surname, Email, PhoneNumber
+FROM Students
+WHERE IsActive = 1;
 ```
 
 **AÇIKLAMA:** 
+
+Öğrencilerin ad-soyad, e-mail ve telefon numaralarının olduğu sanal tablomuzdur.
 
 ---
 
