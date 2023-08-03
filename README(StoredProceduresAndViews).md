@@ -124,10 +124,20 @@ WHERE IsActive = 1;
 
 ---
 
-# 
+# vwExamResultsView
 
 ```
-
+CREATE VIEW [dbo].[vwExamResultsView] AS
+SELECT 
+    S.Name AS StudentName,
+    S.Surname AS StudentSurname,
+    E.ClassId,
+    E.BranchId,
+    E.Name AS ExamName,
+    E.Note AS ExamNote,
+    E.ExamDate
+FROM Exams E
+INNER JOIN Students S ON E.StudentId = S.Id;
 ```
 
 **AÇIKLAMA:** 
