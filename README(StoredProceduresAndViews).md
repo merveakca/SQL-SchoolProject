@@ -21,7 +21,7 @@ END
 
 **AÇIKLAMA:**  
 
-Bu prosedür, Attendance ve LessonProgramId tablolarını kullanarak,  
+Bu prosedür, Attendance ve Students tablolarını kullanarak,  
 öğrencilerin, belirlediğimiz derslerdeki devam durumlarının bilgilerini alabilmek için tasarlanmıştır.  
 
 ---
