@@ -48,29 +48,24 @@ CREATE PROCEDURE [dbo].[GetStudentExams]
 AS
 BEGIN
     SELECT
-        E.Id AS ExamId,
-        C.Name AS ClassName,
-        B.Name AS BranchName,
-        E.Name AS ExamName,
-        E.Note,
-        E.ExamDate,
-        E.IsActive
-    FROM
-        dbo.Exams E
-    INNER JOIN
-        dbo.Classes C ON E.ClassId = C.Id
-    INNER JOIN
-        dbo.Branches B ON E.BranchId = B.Id
-    WHERE
-        E.StudentId = @StudentId;
+	S.Name AS 'Öğrencinin Adı',
+	S.Surname AS 'Öğrencinin Soyadı',
+        C.Name AS 'Sınıfı',
+        B.Name AS 'Dersi',
+        E.Name AS 'Sınavı',
+        E.Note AS 'Sınav Notu',
+        E.ExamDate 'Sınav Tarihi'
+    FROM Exams E
+	LEFT JOIN Classes C ON E.ClassId = C.Id
+	LEFT JOIN Branches B ON E.BranchId = B.Id
+	LEFT JOIN Students S ON E.StudentId=S.Id
+    WHERE E.StudentId = @StudentId;
 END
 ```
 
 **AÇIKLAMA:** 
 
-Sınavların, sınıflara göre, hangi dersten sınava girildiği bilgisini  
-ve öğrencilerin bu sınavlardan aldıkları notların bilgisini,  
-tarih ve saat belirterek bize verecek olan prosedürdür.
+Id'si girilen öğrencinin bütün sınav notlarını gösteren prosedürdür.
 
 ---
 
