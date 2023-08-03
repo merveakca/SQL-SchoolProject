@@ -1,7 +1,5 @@
 # GetAttendanceByStudentId Prosedürü
 ```
-USE [SchoolProject]
-GO
 CREATE OR ALTER PROCEDURE [dbo].[GetAttendanceByStudentId]
     @StudentId INT
 AS
@@ -18,7 +16,6 @@ BEGIN
 	Left Join Students S on A.StudentId=S.Id
     WHERE StudentId = @StudentId;
 END
-GO
 ```
 
 **AÇIKLAMA:**  
@@ -72,8 +69,8 @@ Id'si girilen öğrencinin bütün sınav notlarını gösteren prosedürdür.
 # vwStudentAttandenceView
 
 ```
-    CREATE VIEW [dbo].[vwStudentAttandenceView] AS
-	SELECT 
+CREATE VIEW [dbo].[vwStudentAttandenceView] AS
+    SELECT 
         S.Name AS 'Öğrencinin Adı',
 	S.Surname AS 'Öğrencinin Soyadı',
         B.Name AS 'Ders Adı',
@@ -95,18 +92,18 @@ Bütün öğrencilerin yoklama bilgilerinin bulunduğu sanal tablomuzdur.
 
 ```
 CREATE VIEW [dbo].[vwExamResultsView] AS
-SELECT 
-    S.Name AS 'Öğrencinin Adı',
-    S.Surname AS 'Öğrencinin Soyadı',
-    C.Name AS 'Sınıfı',
-    B.Name AS 'Dersi',
-    E.Name AS ExamName,
-    E.Note AS ExamNote,
-    E.ExamDate
-FROM Exams E
-Left Join Students S ON E.StudentId = S.Id
-Left Join Classes C ON E.ClassId=C.Id
-Left Join Branches B ON E.BranchId=B.Id
+    SELECT 
+	S.Name AS 'Öğrencinin Adı',
+	S.Surname AS 'Öğrencinin Soyadı',
+	C.Name AS 'Sınıfı',
+	B.Name AS 'Dersi',
+	E.Name AS ExamName,
+	E.Note AS ExamNote,
+	E.ExamDate
+    FROM Exams E
+	Left Join Students S ON E.StudentId = S.Id
+	Left Join Classes C ON E.ClassId=C.Id
+	Left Join Branches B ON E.BranchId=B.Id
 ```
 
 **AÇIKLAMA:** 
