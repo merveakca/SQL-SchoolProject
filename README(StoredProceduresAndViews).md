@@ -115,18 +115,25 @@ tarih ve saat belirterek bize verecek olan prosedürdür.
 
 ---
 
-# vwActiveStudentsView
+# vwStudentAttandenceView
 
 ```
-CREATE VIEW [dbo].[vwActiveStudentsView] AS
-SELECT Id, Name, Surname, Email, PhoneNumber
-FROM Students
-WHERE IsActive = 1;
+    CREATE VIEW [dbo].[vwStudentAttandenceView] AS
+	SELECT 
+        S.Name AS 'Öğrencinin Adı',
+	S.Surname AS 'Öğrencinin Soyadı',
+        B.Name AS 'Ders Adı',
+        LessonTime AS 'Dersin Zamanı',
+        IsInClass AS 'Yoklama'
+    FROM [dbo].[Attendance] A
+	Left Join LessonPrograms L on A.LessonProgramId=L.Id
+	Left Join Branches B on L.BranchId=B.Id
+	Left Join Students S on A.StudentId=S.Id
 ```
 
 **AÇIKLAMA:** 
 
-Öğrencilerin ad-soyad, e-mail ve telefon numaralarının olduğu sanal tablomuzdur.
+Bütün öğrencilerin yoklama bilgilerinin bulunduğu sanal tablomuzdur.
 
 ---
 
