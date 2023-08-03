@@ -25,10 +25,26 @@ Id'si girilen öğrencinin, derslerindeki devam durumu bilgilerini alabilmek iç
 
 ---
 
-#  Prosedürü
+# AddStudent Prosedürü
 
 ```
-
+CREATE PROCEDURE [dbo].[AddStudent]
+	@LevelId int,
+	@ClassId int,
+	@Name nvarchar(50),
+	@Surname nvarchar(50),
+	@Email nvarchar(50),
+	@PhoneNumber nvarchar(50),
+	@MotherName nvarchar(50),
+	@FatherName nvarchar(50),
+	@ParentPhoneNumber nvarchar(50),
+	@CreatedProfessionId int,
+	@UpdatedProfessionId int
+AS
+BEGIN
+	Insert Into Students Values(@LevelId,@ClassId,@Name,@Surname,@Email,@PhoneNumber,@MotherName,@FatherName,
+	@ParentPhoneNumber,1,@CreatedProfessionId,GETDATE(),@UpdatedProfessionId,GETDATE())
+END
 ```
 
 **AÇIKLAMA:**  
