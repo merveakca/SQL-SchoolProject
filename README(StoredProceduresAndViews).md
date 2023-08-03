@@ -6,8 +6,6 @@ CREATE OR ALTER PROCEDURE [dbo].[GetAttendanceByStudentId]
     @StudentId INT
 AS
 BEGIN
-    SET NOCOUNT ON;
-
     SELECT 
         S.Name AS 'Öğrencinin Adı',
 	S.Surname AS 'Öğrencinin Soyadı',
