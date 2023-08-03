@@ -77,13 +77,35 @@ Bundan dolayı her öğrenci için ayrı ayrı girdikleri ders sayısı ve gelem
 
 ---
 
-# 
+# GetStudentExams Prosedür
 
 ```
-
+CREATE PROCEDURE [dbo].[GetStudentExams]
+    @StudentId INT
+AS
+BEGIN
+    SELECT
+        E.Id AS ExamId,
+        C.Name AS ClassName,
+        B.Name AS BranchName,
+        E.Name AS ExamName,
+        E.Note,
+        E.ExamDate,
+        E.IsActive
+    FROM
+        dbo.Exams E
+    INNER JOIN
+        dbo.Classes C ON E.ClassId = C.Id
+    INNER JOIN
+        dbo.Branches B ON E.BranchId = B.Id
+    WHERE
+        E.StudentId = @StudentId;
+END
 ```
 
 **AÇIKLAMA:** 
+
+Sınavların, sınıf sınıf hangi dersten sınava girildiği bilgisi ve öğrencilerin bu sınavlardan aldıkları notların bilgisini, tarih ve saat belirterek bize verecek olan prosedürdür.
 
 ---
 
