@@ -26,7 +26,7 @@ GO
 **AÇIKLAMA:**  
 
 Bu prosedür, Attendance, LessonPrograms, Branches ve Students tablolarını kullanarak,  
-öğrencilerin, belirlediğimiz derslerdeki devam durumlarının bilgilerini alabilmek için tasarlanmıştır.  
+Id'si girilen öğrencinin, derslerindeki devam durumu bilgilerini alabilmek için tasarlanmıştır.  
 
 ---
 
