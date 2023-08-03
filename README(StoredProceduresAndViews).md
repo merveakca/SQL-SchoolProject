@@ -142,5 +142,5 @@ INNER JOIN Students S ON E.StudentId = S.Id;
 
 **AÇIKLAMA:** 
 
-
+Öğrencinin adı, soyadı, sınıfını, hangi branştan hangi sınava girdiğini ve kaç aldığını gösteren bir sanal tablodur.
 
