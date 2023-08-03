@@ -1,8 +1,8 @@
-# GetAttendanceByLessonProgramId Prosedürü
+# GetAttendanceByStudentId Prosedürü
 ```
 USE [SchoolProject]
 GO
-CREATE OR ALTER PROCEDURE [dbo].[GetAttendanceStatusByStudentId]
+CREATE OR ALTER PROCEDURE [dbo].[GetAttendanceByStudentId]
     @StudentId INT
 AS
 BEGIN
