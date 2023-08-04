@@ -2,7 +2,7 @@
 # "My created database tables and their descriptions"
 ---
 
-# Students Table
+# 1. Students Table
 
 ```
 Id
@@ -40,7 +40,7 @@ UpdatedDate: Son güncelleme tarihini ve saati
 
 ---
 
-# Exams Table
+# 2. Exams Table
 
 ```
 Id
@@ -72,7 +72,7 @@ UpdatedDate: Sınav verilerinin güncellendiği tarih ve saat bilgisi
 
 ---
 
-# Attendance Table
+# 3. Attendance Table
 
 ```
 Id
@@ -90,7 +90,7 @@ Tuttuğum bu verileri, öğrencilerimin performanslarını değerlendirirken ve 
 
 ---
 
-# Branches Table
+# 4. Branches Table
 
 ```
 Id
@@ -105,7 +105,7 @@ IsActive ile de herhangi bir dersin okulda verilip verilmediğini belirttim.
 
 ---
 
-# Classes Table
+# 5. Classes Table
 
 ```
 Id
@@ -132,7 +132,7 @@ UpdatedDate: Sınıfın güncellendiği tarih ve saat bilgisi
 
 ---
 
-# LessonPrograms Table
+# 6. LessonPrograms Table
 
 ```
 Id
@@ -148,7 +148,7 @@ IsActive ile de ders programının aktif olup olmadığını belirttim.
 
 ---
 
-# Levels Table
+# 7. Levels Table
 
 ```
 Id
@@ -163,7 +163,7 @@ Birçok tablo ile de ilişkili kullandım.
 
 ---
 
-# ProfessionBranch Table
+# 8. ProfessionBranch Table
 
 ```
 Id
@@ -180,7 +180,7 @@ Bu meslek grupları dışında çalışan kişilere bu atamayı yapmadım (kat g
 
 ---
 
-# ProfessionRoles Table
+# 9. ProfessionRoles Table
 
 ```
 Id
@@ -201,7 +201,7 @@ Müdür, Müdür Yardımcısı atadım ve diğerlerini de branş öğretmeni ola
 
 ---
 
-# Professions Table
+# 10. Professions Table
 
 ```
 Id
@@ -230,7 +230,7 @@ UpdatedDate: Meslek kaydının güncellendiği tarih ve saat bilgisini
 
 ---
 
-# Roles Table
+# 11. Roles Table
 
 ```
 Id
@@ -244,7 +244,7 @@ Bu tabloda çalışanların, Müdür, Müdür Yardımcısı ve Öğretmen atamal
 
 ---
 
-# Topics Table
+# 12. Topics Table
 
 ```
 Id
@@ -269,7 +269,7 @@ UpdatedDate: Konu kaydının güncellendiği tarih ve saat bilgisi
 
 ---
 
-# Units Table
+# 13. Units Table
 
 ```
 Id
