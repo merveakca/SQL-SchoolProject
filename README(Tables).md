@@ -1,4 +1,4 @@
-# DataBase'imde Oluşturduğum Tablolarım ve Açıklamalarım
+# SchoolProject DataBase'imde Oluşturduğum Tablolarım ve Açıklamalarım
 # "My created database tables and their descriptions"
 ---
 
