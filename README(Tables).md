@@ -1,4 +1,3 @@
-# SQL-SchoolProject
 # DataBase'imde Oluşturduğum Tablolarım ve Açıklamalarım
 # "My created database tables and their descriptions"
 ---
