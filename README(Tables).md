@@ -122,7 +122,7 @@ UpdatedDate
 **AÇIKLAMA:**  
 
 Bu tabloda sınıfların herbirinin kademesini (9,10,11 ve 12. sınıf) belirleyerek, her bir sınıfa bir danışman öğretmen atadım.  
-Sınıf isimlerini belirledim (9-A, 9-B, 10-A gibi).  
+Sınıf isimlerini belirledim (9-A, 9-B, 10-A gibi)  
 IsActive ile de sınıfın aktif olup olmadığını belirttim.  
   
 CreatedProfessionId: Sınıfı oluşturan kullanıcının Id'si  
